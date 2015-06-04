@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="page-header">
+	  <h1>Halaman Artikel Index  </h1>
+	  
+	</div>
+
+<div class="panel">
+	<table border = '0' width = '500px'>
+		<tr>
+			<td align = 'center'><%= link_to "Add new article", {:controller => "articles", :action => "new" }, :class => "btn btn-sm btn-primary" %></td>
+			<td align = 'center'>or</td>
+			<td align = 'center'> 
+				<%= link_to "add new", new_article_path, :remote => true, 'data-toggle'=>"modal",  'data-target'=> "#basicModal"%> 
+			</td>
+			<td align = 'center'>or</td>
+			<%= form_tag import_articles_path, multipart: true, :class => "form-horizontal", :role => "form" do %>
+			<td align = 'center'><%= file_field_tag :sample, class: "btn btn-default" %>  </td>
+			<td align = 'center'><%= submit_tag "Import", class: "btn btn-default btn-primary" %></td>
+                <% end %>
+		</tr>
+	</table>
+
+    </div>
+
+<div class="panel">
+	<%= link_to 'download All Articles', download_file_articles_path, :class => "btn btn-sm btn-primary" %>
+	
+
+	<%= will_paginate @articles %>
+	<div id="load_article">
+		<%= render 'article' %>
+	</div>
+</div>
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Add New Article</h4>
+            </div>
+
+			
+            <div class="modal-body" id = "form_new">
+				
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                
+        	</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+</div>

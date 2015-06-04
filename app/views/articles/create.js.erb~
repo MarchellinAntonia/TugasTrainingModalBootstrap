@@ -1,0 +1,3 @@
+$("#articlelist").html(" <%= j( render 'articles/comment' ) %>");
+
+
